@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
@@ -881,5 +881,88 @@ body {
 
   .upload-modal {
     width: 95vw;
+  }
+}
+
+/* ========== Video Player Modal ========== */
+.player-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.player-container {
+  position: relative;
+  width: 90vw;
+  max-width: 960px;
+  background: #1a1a2e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: scaleUp 0.25s ease;
+}
+
+.player-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.player-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.player-video {
+  width: 100%;
+  display: block;
+  background: #000;
+  max-height: 70vh;
+}
+
+.player-info {
+  padding: 14px 18px;
+  color: #e0e0e0;
+}
+.player-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+.player-info span {
+  font-size: 13px;
+  color: #999;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 640px) {
+  .player-container {
+    width: 100vw;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+  .player-video {
+    max-height: 50vh;
   }
 }

@@ -88,6 +88,31 @@
       </div>
     </Teleport>
 
+    <!-- Video Player Modal -->
+    <Teleport to="body">
+      <div v-if="playingVideo" class="player-overlay" @click.self="closePlayer">
+        <div class="player-container">
+          <button class="player-close-btn" @click="closePlayer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <video
+            :src="playingVideo.path"
+            class="player-video"
+            controls
+            autoplay
+            playsinline
+          ></video>
+          <div class="player-info">
+            <h4>{{ playingVideo.filename }}</h4>
+            <span>{{ formatSize(playingVideo.size) }} &middot; {{ formatDate(playingVideo.uploadedAt) }}</span>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
+
     <!-- Toast -->
     <div v-if="toastMsg" class="toast" :class="toastType">{{ toastMsg }}</div>
 
@@ -152,7 +177,7 @@
               <video :src="video.path" preload="metadata"></video>
 
               <!-- Play overlay -->
-              <div class="card-play-overlay">
+              <div class="card-play-overlay" @click="playVideo(video)">
                 <div class="play-icon-circle">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <polygon points="8,5 19,12 8,19" />
@@ -223,6 +248,7 @@ const fileInputRef = ref(null);
 const toastMsg = ref("");
 const toastType = ref("success");
 const activeDropdown = ref("");
+const playingVideo = ref(null);
 
 let toastTimer = null;
 
@@ -318,6 +344,11 @@ function closeDropdown(e) {
     activeDropdown.value = "";
   }
 }
+
+
+// ---- Player ----
+function playVideo(video) { playingVideo.value = video; }
+function closePlayer() { playingVideo.value = null; }
 
 // ---- Toast ----
 function showToast(msg, type = "success") {
