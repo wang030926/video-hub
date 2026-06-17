@@ -1,4 +1,4 @@
-﻿# VideoHub - 视频仓库
+# VideoHub - 视频仓库
 
 一个基于 Vue 3 + Express 的个人视频上传与展示网站。
 

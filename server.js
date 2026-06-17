@@ -1,4 +1,4 @@
-﻿import express from "express";
+import express from "express";
 import multer from "multer";
 import cors from "cors";
 import path from "path";
@@ -92,6 +92,6 @@ app.delete("/api/videos/:filename", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Video server running on http://localhost:" + PORT);
 });
