@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="app">
     <!-- Header -->
     <header class="header">
@@ -62,7 +62,7 @@
                 </div>
                 <p class="drop-title">拖拽视频到此处</p>
                 <p class="drop-hint">或点击下方按钮选择文件，最大 500MB</p>
-                <span class="drop-browse">选择文件</span>
+                <span class="drop-browse" @click="fileInputRef?.click()">选择文件</span>
                 <input
                   ref="fileInputRef"
                   type="file"
