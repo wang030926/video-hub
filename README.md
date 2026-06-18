@@ -46,4 +46,5 @@ npm run dev
 ├── public/
 │   └── videos/        # 上传的视频存储目录
 └── vite.config.js     # Vite 配置 (含 API 代理)
+测试阶段，仅供个人测试
 ```
